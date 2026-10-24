@@ -956,6 +956,23 @@ html, body { width: 100%; background: #080810; overflow-x: hidden; font-family: 
 :is(#sec1, #sec15) .about-line em {
   font-size: 22px !important;
 }
+
+/* Takeaway: each finding on one line, closing line in gold with breathing room */
+#sec7 #s7 { max-width: 1100px; }
+#sec7 .closing-para .line-bold {
+  white-space: nowrap !important;
+  font-size: clamp(15px, 4.6vw, 44px) !important;
+}
+#sec7 .closing-para .line-normal {
+  margin-top: 56px;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(17px, 2.6vw, 30px) !important;
+  line-height: 1.45 !important;
+  color: rgba(232,197,71,0.95) !important;
+}
+@media (max-width: 600px) { #sec7 .br-wide { display: none; } }
 </style>
 </head>
 <body>
@@ -1276,7 +1293,7 @@ html, body { width: 100%; background: #080810; overflow-x: hidden; font-family: 
     <span class="line-bold">37 out of 49 artists made it within 10 years.</span>
     <span class="line-bold">Bollywood fame bought about a year's head start.</span>
     <span class="line-bold">Indie artists got there fastest.</span>
-    <span class="line-normal" style="margin-top:20px">The concert stage in India isn't reserved for film stars — <em style="font-family:'Cormorant Garamond',serif;font-style:italic;color:rgba(232,197,71,0.9)">artists who build their own fans get there too, often sooner.</em></span>
+    <span class="line-normal">The concert stage in India isn't reserved for film&nbsp;stars&nbsp;— <br class="br-wide">artists who build their own fans get there too, often sooner.</span>
   </div>
 
   <p class="final-question" id="finalq">
