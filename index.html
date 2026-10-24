@@ -15,9 +15,9 @@ html, body { width: 100%; background: #080810; overflow-x: hidden; font-family: 
 #nav-dots { position: fixed; right: 20px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 10px; z-index: 999; }
 .nav-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.75); cursor: pointer; transition: all 0.3s; }
 .nav-dot.active { background: rgba(232,197,71,0.9); transform: scale(1.6); }
-#sec1, #sec2, #sec3, #sec4, #sec5, #sec6, #sec7 { position: relative; z-index: 2; overflow: hidden; }
+#sec1, #sec15, #sec2, #sec3, #sec4, #sec5, #sec6, #sec7 { position: relative; z-index: 2; overflow: hidden; }
 
-#sec1 /* ── Fixed background across both sections ── */
+:is(#sec1, #sec15) /* ── Fixed background across both sections ── */
   
 
   
@@ -36,7 +36,7 @@ html, body { width: 100%; background: #080810; overflow-x: hidden; font-family: 
     z-index: 2;
   }
 
-#sec1 /* ══ SECTION 1 TEXT ══ */
+:is(#sec1, #sec15) /* ══ SECTION 1 TEXT ══ */
   .eyebrow {
     font-family: 'DM Sans', sans-serif;
     font-size: 11px;
@@ -47,7 +47,7 @@ html, body { width: 100%; background: #080810; overflow-x: hidden; font-family: 
     margin-bottom: 20px;
   }
 
-#sec1 .title-top {
+:is(#sec1, #sec15) .title-top {
     display: block;
     font-family: 'DM Sans', sans-serif;
     font-weight: 300;
@@ -58,7 +58,7 @@ html, body { width: 100%; background: #080810; overflow-x: hidden; font-family: 
     margin-bottom: 8px;
   }
 
-#sec1 .title-script {
+:is(#sec1, #sec15) .title-script {
     display: block;
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
@@ -78,7 +78,7 @@ html, body { width: 100%; background: #080810; overflow-x: hidden; font-family: 
     animation: shimmer 6s linear infinite;
   }
 
-#sec1 .bodycopy {
+:is(#sec1, #sec15) .bodycopy {
     font-family: 'DM Sans', sans-serif;
     font-size: clamp(13px, 1.6vw, 16px);
     font-weight: 400;
@@ -88,7 +88,7 @@ html, body { width: 100%; background: #080810; overflow-x: hidden; font-family: 
     letter-spacing: 0.05em;
   }
 
-#sec1 /* ══ SECTION 1.5 TEXT ══ */
+:is(#sec1, #sec15) /* ══ SECTION 1.5 TEXT ══ */
   .about-label {
     font-family: 'DM Sans', sans-serif;
     font-size: 11px;
@@ -99,7 +99,7 @@ html, body { width: 100%; background: #080810; overflow-x: hidden; font-family: 
     margin-bottom: 36px;
   }
 
-#sec1 .about-line {
+:is(#sec1, #sec15) .about-line {
     font-family: 'DM Sans', sans-serif;
     font-weight: 300;
     font-size: clamp(16px, 2.4vw, 28px);
@@ -109,7 +109,7 @@ html, body { width: 100%; background: #080810; overflow-x: hidden; font-family: 
     letter-spacing: 0.02em;
   }
 
-#sec1 .about-line em {
+:is(#sec1, #sec15) .about-line em {
     font-style: italic;
     font-family: 'Cormorant Garamond', serif;
     font-weight: 600;
@@ -128,14 +128,14 @@ html, body { width: 100%; background: #080810; overflow-x: hidden; font-family: 
     animation: shimmer 6s linear infinite;
   }
 
-#sec1 .divider {
+:is(#sec1, #sec15) .divider {
     width: 36px;
     height: 1px;
     background: rgba(232,197,71,0.35);
     margin: 40px auto 0;
   }
 
-#sec1 /* ══ SCROLL PROMPT ══ */
+:is(#sec1, #sec15) /* ══ SCROLL PROMPT ══ */
   .scrollprompt {
     position: absolute;
     bottom: 36px;
@@ -153,7 +153,7 @@ html, body { width: 100%; background: #080810; overflow-x: hidden; font-family: 
     z-index: 10;
   }
 
-#sec1 .scroll-line {
+:is(#sec1, #sec15) .scroll-line {
     width: 1px;
     height: 36px;
     background: linear-gradient(to bottom, rgba(232,197,71,0.4), transparent);
@@ -824,10 +824,11 @@ html, body { width: 100%; background: #080810; overflow-x: hidden; font-family: 
 #sec2 .year-start,
 #sec2 .year-tick,
 #sec2 .year-end { color: rgba(255,255,255,0.7) !important; font-size: 12px !important; }
+#sec2 #yend-gm { transform: translateX(-100%); } /* ends at the track's right edge, so right-align it */
 #sec2 .gantt-counter { color: #fff !important; }
 
 /* Boost text readability — text only, not backgrounds */
-#sec1 .eyebrow, #sec2 .eyebrow, #sec3 .eyebrow, #sec4 .eyebrow, #sec5 .eyebrow, #sec6 .eyebrow, #sec7 .eyebrow { color: rgba(232,197,71,0.95) !important; }
+:is(#sec1, #sec15) .eyebrow, #sec2 .eyebrow, #sec3 .eyebrow, #sec4 .eyebrow, #sec5 .eyebrow, #sec6 .eyebrow, #sec7 .eyebrow { color: rgba(232,197,71,0.95) !important; }
 #sec2 .deck, #sec3 .deck, #sec4 .deck, #sec5 .deck, #sec6 .deck { color: rgba(255,255,255,0.78) !important; }
 #sec2 .punchy { color: rgba(255,255,255,0.6) !important; }
 #sec2 .insight, #sec3 .insight, #sec4 .insight, #sec5 .insight, #sec6 .insight, #sec7 .insight { color: rgba(255,255,255,0.72) !important; }
@@ -873,7 +874,7 @@ html, body { width: 100%; background: #080810; overflow-x: hidden; font-family: 
 #sec7 .line-accent { color: rgba(232,197,71,0.95) !important; }
 
 /* Make title-top same as title-script */
-#sec1 .title-top {
+:is(#sec1, #sec15) .title-top {
   font-family: 'Cormorant Garamond', serif !important;
   font-style: italic !important;
   font-weight: 600 !important;
@@ -947,12 +948,12 @@ html, body { width: 100%; background: #080810; overflow-x: hidden; font-family: 
 }
 
 /* Reduce about-line size */
-#sec1 .about-line {
+:is(#sec1, #sec15) .about-line {
   font-size: 22px !important;
   line-height: 1.7 !important;
   color: rgba(255,255,255,0.72) !important;
 }
-#sec1 .about-line em {
+:is(#sec1, #sec15) .about-line em {
   font-size: 22px !important;
 }
 </style>
@@ -962,7 +963,7 @@ html, body { width: 100%; background: #080810; overflow-x: hidden; font-family: 
 <div id="fixed-overlay"></div>
 <div id="progress-bar"></div>
 <nav id="nav-dots">
-  <div class="nav-dot" title="Opening"></div>  <div class="nav-dot" title="All 49"></div>  <div class="nav-dot" title="Two Journeys"></div>  <div class="nav-dot" title="Bollywood"></div>  <div class="nav-dot" title="Gender"></div>  <div class="nav-dot" title="Genre"></div>  <div class="nav-dot" title="Closing"></div>
+  <div class="nav-dot" title="Opening"></div>  <div class="nav-dot" title="Two Journeys"></div>  <div class="nav-dot" title="From two to 49"></div>  <div class="nav-dot" title="All 49"></div>  <div class="nav-dot" title="Bollywood"></div>  <div class="nav-dot" title="Gender"></div>  <div class="nav-dot" title="Genre"></div>  <div class="nav-dot" title="Closing"></div>
 </nav>
 <div id="sec1">
 <!-- ══ SECTION 1 ══ -->
@@ -977,40 +978,6 @@ html, body { width: 100%; background: #080810; overflow-x: hidden; font-family: 
   </div>
 </section>
 
-<!-- ══ SECTION 1.5 ══ -->
-<section id="s15">
-  <p class="about-label">About this story</p>
-  <p class="about-line">
-    <em>I looked at 49 famous Indian artists and counted the years between their first released song and their first headline concert — across genre, gender, and era.</em>
-  </p>
-  <div class="divider"></div>
-  <div class="scrollprompt">
-    <span>Scroll</span>
-    <div class="scroll-line"></div>
-  </div>
-</section>
-</div><div id="sec3">
-<section id="s3">
-  <p class="eyebrow">The full picture</p>
-  <h2 class="headline">49 artists. Every journey mapped.</h2>
-  <p class="deck">Each bubble is one artist. Size shows how many years each artist spent from their first song to their first concert. Tap or hover to see who's who.</p>
-
-  <div id="bucket-rows"></div>
-
-  <div class="btt" id="btt">
-    <div class="btt-name" id="btt-name"></div>
-    <div class="btt-info" id="btt-info"></div>
-  </div>
-
-  
-
-  <div class="insight">
-    Across 49 artists, the average is <strong>7.2 years</strong> from first song to first headline concert.
-    Most artists you know made it within 10 years.
-    The ones who took longer weren't necessarily slower —
-    <em>many started when India had far fewer stages to play.</em>
-  </div>
-</section>
 </div><div id="sec2">
 <section id="s2">
 
@@ -1097,7 +1064,43 @@ html, body { width: 100%; background: #080810; overflow-x: hidden; font-family: 
   </div>
 
 </section>
-</div><div id="sec4">
+</div><div id="sec15">
+<!-- ══ SECTION 1.5 ══ -->
+<section id="s15">
+  <p class="about-label">From two to forty-nine</p>
+  <p class="about-line">
+    <em>Two artists make a story. Forty-nine make a pattern.</em>
+    I counted the years between each artist's first released song and their first headline concert — across genre, gender, and era.
+  </p>
+  <div class="divider"></div>
+  <div class="scrollprompt">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+</div><div id="sec3">
+<section id="s3">
+  <p class="eyebrow">The full picture</p>
+  <h2 class="headline">49 artists. Every journey mapped.</h2>
+  <p class="deck">So where does everyone else fall? Each bubble is one artist. Size shows how many years each artist spent from their first song to their first concert. Tap or hover to see who's who.</p>
+
+  <div id="bucket-rows"></div>
+
+  <div class="btt" id="btt">
+    <div class="btt-name" id="btt-name"></div>
+    <div class="btt-info" id="btt-info"></div>
+  </div>
+
+  
+
+  <div class="insight">
+    Across 49 artists, the average is <strong>7.2 years</strong> from first song to first headline concert.
+    Most artists you know made it within 10 years.
+    <em>Gurdas Maan's 31 years is the outlier, not the rule.</em>
+  </div>
+</section>
+</div>
+<div id="sec4">
 <section id="s4">
 
   <p class="eyebrow" id="eyebrow">Myth vs. reality</p>
@@ -1309,7 +1312,7 @@ html, body { width: 100%; background: #080810; overflow-x: hidden; font-family: 
 </section>
 </div>
 <script>
-const _secs = ['sec1','sec3','sec2','sec4','sec5','sec6','sec7'].map(id => document.getElementById(id));
+const _secs = ['sec1','sec2','sec15','sec3','sec4','sec5','sec6','sec7'].map(id => document.getElementById(id));
 const _dots = document.querySelectorAll('.nav-dot');
 if (_dots[0]) _dots[0].classList.add('active');
 _dots.forEach((d,i) => { d.addEventListener('click', () => _secs[i] && _secs[i].scrollIntoView({behavior:'smooth'})); });
