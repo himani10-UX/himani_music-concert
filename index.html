@@ -1341,32 +1341,41 @@ const allBuckets = [
 
   function drawRow(canvas, items, color) {
     const W   = canvas.parentElement.offsetWidth;
-    const H   = 110;
+    const maxR = 42, minR = 10;
+    const sized = items.map(d => ({
+      d,
+      r: d.yrs === 0
+        ? 10
+        : Math.max(minR, Math.min(maxR, 10 + Math.sqrt(d.yrs / 31) * (maxR - 10))),
+    })).sort((a, b) => b.r - a.r); // biggest first packs more easily
+
+    // Try to fit every bubble at height H; returns null if any won't fit
+    function pack(H) {
+      const out = [];
+      for (const { d, r } of sized) {
+        let px, py, tries = 0, ok = false;
+        while (!ok && tries < 800) {
+          px = r + 4 + Math.random() * (W - r * 2 - 8);
+          py = r + 4 + Math.random() * (H - r * 2 - 8);
+          ok = out.every(p => Math.hypot(px - p.x, py - p.y) >= r + p.r + 4);
+          tries++;
+        }
+        if (!ok) return null;
+        out.push({ x: px, y: py, r, d });
+      }
+      return out;
+    }
+
+    // Grow the row until no artist is left out
+    let H = 110, placed = pack(H);
+    while (!placed && H < 1200) { H += 20; placed = pack(H); }
+    placed = placed || [];
+
     canvas.width  = W;
     canvas.height = H;
     const ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, W, H);
-
-    const maxR = 42, minR = 10;
-    const placed = [];
-    const rowPositions = [];
-
-    items.forEach(d => {
-      const r = d.yrs === 0
-        ? 10
-        : Math.max(minR, Math.min(maxR, 10 + Math.sqrt(d.yrs / 31) * (maxR - 10)));
-      let px, py, tries = 0, ok = false;
-      while (!ok && tries < 800) {
-        px = r + 4 + Math.random() * (W - r * 2 - 8);
-        py = r + 4 + Math.random() * (H - r * 2 - 8);
-        ok = placed.every(p => Math.hypot(px - p.x, py - p.y) >= r + p.r + 4);
-        tries++;
-      }
-      if (ok) {
-        placed.push({ x: px, y: py, r, d });
-        rowPositions.push({ x: px, y: py, r, d, canvas });
-      }
-    });
+    const rowPositions = placed.map(p => ({ ...p, canvas }));
 
     placed.forEach(p => {
       ctx.beginPath();
